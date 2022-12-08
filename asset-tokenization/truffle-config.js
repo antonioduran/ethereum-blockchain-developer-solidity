@@ -24,6 +24,12 @@
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 
+
+const path = require("path");
+require("dotenv").config({path: "./.env"});
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const AccountIndex = 0;
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -35,7 +41,7 @@ module.exports = {
    * $ truffle test --network <network-name>
    */
 
-  contracts_build_directory: "./client/src/contracts",
+  contracts_build_directory: "./src/client/src/contracts",
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
@@ -47,6 +53,18 @@ module.exports = {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 9545,            // Standard Ethereum port (default: none)
      network_id: "*"    // Any network (default: none)
+    },
+    ganache_local: {
+      provider: function() {
+        return new HDWalletProvider(process.env.MNEMONIC, "http://127.0.0.1:7545", AccountIndex)
+      },
+      network_id: 5777
+    },
+    goerli_infura: {
+      provider: function() {
+        return new HDWalletProvider(process.env.MNEMONIC, "https://goerli.infura.io/v3/ffa60321cbbd4cfda3352014c556e3c3", AccountIndex)
+      },
+      network_id: 5
     },
     //
     // An additional network, but with some advanced options…

@@ -1,25 +1,25 @@
-import { EthProvider } from "./contexts/EthContext";
-import Intro from "./components/Intro/";
-import Setup from "./components/Setup";
-import Demo from "./components/Demo";
-import Footer from "./components/Footer";
+//import { EthProvider } from "./contexts/EthContext";
+//import Intro from "./components/Intro/";
+//import Setup from "./components/Setup";
+//import Demo from "./components/Demo";
+//import Footer from "./components/Footer";
+
+import ItemManager from "./components/ItemManager/index.jsx"
+
 import "./App.css";
 
 function App() {
   return (
-    <EthProvider>
+    // <EthProvider>
       <div id="App" >
         <div className="container">
-          <Intro />
+          <ItemManager />
           <hr />
-          <Setup />
-          <hr />
-          <Demo />
-          <hr />
-          <Footer />
+        
+          {/* <Footer /> */}
         </div>
       </div>
-    </EthProvider>
+    // </EthProvider>
   );
 }
 
